@@ -1,7 +1,7 @@
 server:
-  port: 8082
+  port: 8081
 spring:
   datasource:
     url: jdbc:mysql://localhost/grammar
-    username: root
-    password: aa19881203
+    username: db_chris
+    password: ABCaiChen
