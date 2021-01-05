@@ -5,6 +5,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import mapper.GrammarMapper;
 import pojo.Grammar;
+import pojo.Mean;
+import java.util.*;
 @RestController("/helloworld")
 public class HelloController {
 
@@ -22,9 +24,10 @@ public class HelloController {
         return helloWorld.hello();
     }
 
-    @RequestMapping("/find")
-    public String findById() {
-        Grammar grammar = grammarMapper.findByID(10002);
-        return grammar.getTitle();
+    @RequestMapping("/search")
+    public List<Mean> findById(@RequestParam("keyword") String keyword) {
+        System.out.println(keyword);
+        List<Mean> means = grammarMapper.findByKeyword(keyword);
+        return means;
     }
 }

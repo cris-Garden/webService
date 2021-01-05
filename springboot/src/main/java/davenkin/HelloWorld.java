@@ -5,6 +5,6 @@ import org.springframework.stereotype.Component;
 public class HelloWorld {
 
     public String hello() {
-        return "Hello My World!";
+        return "Hello World!";
     }
 }
