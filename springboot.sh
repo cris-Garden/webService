@@ -27,7 +27,7 @@ kill -9 ${pid}
 java -jar $APP_NAME --spring.profiles.active=release &
 else 
 #nohup java $JVM -jar $APPFILE_PATH $APP_NAME > /dev/null 2>&1 
-java -jar $APP_NAME --spring.profiles.active=release
+java -jar $APP_NAME --spring.profiles.active=release &
 fi
 } 
 #停止方法 
