@@ -5,3 +5,10 @@ spring:
     url: jdbc:mysql://localhost/grammar
     username: root
     password: aa19881203
+  
+  mvc:
+    static-path-pattern: /**
+  resources:
+    static-locations: file:../resources/
+
+
