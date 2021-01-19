@@ -15,6 +15,7 @@ import springfox.documentation.spring.web.plugins.Docket;
 import springfox.documentation.swagger2.annotations.EnableSwagger2;
 import java.util.Collections;
 import io.swagger.annotations.ApiOperation;
+import org.springframework.beans.factory.annotation.Value;
 
 import static com.google.common.collect.Lists.newArrayList;
 
@@ -26,9 +27,14 @@ import static com.google.common.collect.Lists.newArrayList;
 @Configuration
 @EnableSwagger2
 public class SwaggerConfig {
+
+    @Value("${swagger2.host:localhost:8081}")
+    private String swaggerHost;
+        
     @Bean
     public Docket api() {
         return new Docket(DocumentationType.SWAGGER_2)
+                .host(swaggerHost)
                 .select()
                 .apis(RequestHandlerSelectors.basePackage("com.app.davenkin"))
                 .paths(PathSelectors.any())
