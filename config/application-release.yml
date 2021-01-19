@@ -1,5 +1,7 @@
 server:
   port: 8082
+    # 从反向代理读取相关的HTTP Header:
+  forward-headers-strategy: native
 spring:
   datasource:
     url: jdbc:mysql://localhost/grammar
