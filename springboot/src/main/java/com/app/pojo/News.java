@@ -12,6 +12,24 @@ public class News {
     private String imageurl;
     private String fromurl;
     private String newimage;
+    private String type;
+    private int needshow;
+
+    public int getNeedshow() {
+        return this.needshow;
+    }
+
+    public void setNeedshow(int needshow) {
+        this.needshow = needshow;
+    }
+
+    public String getType() {
+        return this.type;
+    }
+
+    public void setType(String type) {
+        this.type = type;
+    }
     private List<Content> contents;
 
     public List<Content> getContents() {
