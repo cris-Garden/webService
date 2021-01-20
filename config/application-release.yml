@@ -1,5 +1,5 @@
 server:
-  port: 8082
+  port: 8081
   # 从反向代理读取相关的HTTP Header:
   forward-headers-strategy: native
 spring:
@@ -14,4 +14,4 @@ spring:
     static-locations: file:./resources/
 
 swagger2:
-  host: 47.101.160.248:82
+  host: 47.101.160.248:81
