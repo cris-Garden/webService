@@ -11,6 +11,7 @@ public interface NewMapper{
 
     @Select("select * from news.news where id = #{id}")
     @Results({
+        @Result(property="newid",column="newid"),
         @Result(
             property="contents",
             column="newid",

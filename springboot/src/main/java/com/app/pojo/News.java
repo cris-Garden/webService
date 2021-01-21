@@ -14,6 +14,15 @@ public class News {
     private String newimage;
     private String type;
     private int needshow;
+    private String newid;
+
+    public String getNewid() {
+        return this.newid;
+    }
+
+    public void setNewid(String newid) {
+        this.newid = newid;
+    }
 
     public int getNeedshow() {
         return this.needshow;

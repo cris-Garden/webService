@@ -50,4 +50,19 @@ public class NewsController {
         return newsList;
     }
 
+    @ApiOperation("分页查询查找下一页NHK新聞、传递最后一条新闻id")
+    @GetMapping("/news/day/page/{id}")
+    public List<News> getDayNextPage(@PathVariable("id") int id) {
+        System.out.println(id);
+        List<News> newsList = newMapper.selectNextPageByIDAndType(id,"day_easy");
+        return newsList;
+    }
+
+    @ApiOperation("更新新闻每日新闻")
+    @GetMapping("/news/day/update")
+    public List<News> getDayFirstPage() {
+        List<News> newsList = newMapper.selectFirstPageByType("day_easy");
+        return newsList;
+    }
+
 }
