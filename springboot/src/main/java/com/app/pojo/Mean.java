@@ -9,11 +9,11 @@ public class Mean{
     private String level;
     private String mean;
     private String grammar_id;
-    private String example;
+    private String format;
     private List<Example> examples;
 
     public Integer getId() {
-        return id;
+        return this.id;
     }
 
     public void setId(Integer id) {
@@ -21,45 +21,43 @@ public class Mean{
     }
 
     public String getTitle() {
-        return title;
+        return this.title;
     }
 
     public void setTitle(String title) {
-        this.title = title == null ? "" : title.trim();
+        this.title = title;
     }
 
     public String getLevel() {
-        return level;
+        return this.level;
     }
 
-    public void setLevel (String level) {
-        this.level = level == null ? "" : level.trim();
+    public void setLevel(String level) {
+        this.level = level;
     }
-
 
     public String getMean() {
-        return mean;
+        return this.mean;
     }
 
     public void setMean(String mean) {
-        this.mean = mean == null ? "" : mean.trim();
+        this.mean = mean;
     }
 
-
     public String getGrammar_id() {
-        return grammar_id;
+        return this.grammar_id;
     }
 
     public void setGrammar_id(String grammar_id) {
-        this.grammar_id = grammar_id == null ? "" : grammar_id.trim();
+        this.grammar_id = grammar_id;
     }
 
-    public String getExample() {
-        return this.example;
+    public String getFormat() {
+        return this.format;
     }
 
-    public void setExample(String example) {
-        this.example = example;
+    public void setFormat(String format) {
+        this.format = format;
     }
 
     public List<Example> getExamples() {
@@ -69,4 +67,6 @@ public class Mean{
     public void setExamples(List<Example> examples) {
         this.examples = examples;
     }
+
+   
 }

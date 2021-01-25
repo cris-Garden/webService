@@ -42,7 +42,7 @@ public interface GrammarMapper {
 
     /******************************    搜索功能 *******************************/
     //根据关键字查找语法
-    @Select("select * from grammar.grammar where title like '%${title}%'")
+    @Select("select id,title,level from grammar.grammar where title like '%${title}%'")
     @Results({
         //必须再写一次才会付值给Grammar的id属性否则属性为空
         @Result(property = "id", column = "id"),
@@ -53,7 +53,7 @@ public interface GrammarMapper {
     List<Grammar> findGrammarByKeyword(@Param("title") String title);
 
     //根据语法等级搜索语法
-    @Select("select * from grammar.grammar where level='${level}'")
+    @Select("select id,title,level from grammar.grammar where level='${level}'")
     @Results({
         //必须再写一次才会付值给Grammar的id属性否则属性为空
         @Result(property = "id", column = "id"),
@@ -65,7 +65,7 @@ public interface GrammarMapper {
 
 
     //根据关键字搜索语法的意思
-    @Select("select id, mean,level,title from grammar.Means where grammar_id = #{grammarID}")
+    @Select("select id,mean from grammar.Means where grammar_id = #{grammarID}")
     List<Mean> searchMeanByGrammarID(Integer grammarID);
 
 

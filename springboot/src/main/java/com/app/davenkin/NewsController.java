@@ -37,10 +37,15 @@ public class NewsController {
 
     @ApiOperation("分页查询查找下一页NHK新聞、传递最后一条新闻id")
     @GetMapping("/news/nhk/page/{id}")
-    public List<News> getNHKNextPage(@PathVariable("id") int id) {
+    public SearchData getNHKNextPage(@PathVariable("id") int id) {
         System.out.println(id);
         List<News> newsList = newMapper.selectNextPageByIDAndType(id,"nhk_easy");
-        return newsList;
+        int max = newMapper.selectCountByType("nhk_easy");
+        SearchData data = new SearchData<News>();
+        data.setItems(newsList);
+        data.setItemCount(newsList.size());
+        data.setMaxCount(max);
+        return data;
     }
 
     @ApiOperation("更新新闻nhk新闻")
@@ -52,10 +57,15 @@ public class NewsController {
 
     @ApiOperation("分页查询查找下一页NHK新聞、传递最后一条新闻id")
     @GetMapping("/news/day/page/{id}")
-    public List<News> getDayNextPage(@PathVariable("id") int id) {
+    public SearchData getDayNextPage(@PathVariable("id") int id) {
         System.out.println(id);
         List<News> newsList = newMapper.selectNextPageByIDAndType(id,"day_easy");
-        return newsList;
+        int max = newMapper.selectCountByType("day_easy");
+        SearchData data = new SearchData<News>();
+        data.setItems(newsList);
+        data.setItemCount(newsList.size());
+        data.setMaxCount(max);
+        return data;
     }
 
     @ApiOperation("更新新闻每日新闻")

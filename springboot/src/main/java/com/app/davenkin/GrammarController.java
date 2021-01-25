@@ -4,8 +4,7 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import com.app.mapper.GrammarMapper;
-import com.app.pojo.Grammar;
-import com.app.pojo.Mean;
+import com.app.pojo.*;
 import java.util.*;
 import org.springframework.util.*;
 import io.swagger.annotations.Api;
@@ -42,5 +41,14 @@ public class GrammarController {
         System.out.println(id);
         Grammar grammar = grammarMapper.findGrammarByID(id);
         return grammar;
+    }
+
+    @ApiOperation("获取语法首页数据")
+    @GetMapping("/grammar/home")
+    public GrammarHome getGrammarHome() {
+        GrammarHome grammarHome = new GrammarHome();
+        List<String> stringList = Arrays.asList("N1", "N2", "N3", "N4", "N5");
+        grammarHome.setLevels(stringList);
+        return grammarHome;
     }
 }
