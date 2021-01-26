@@ -11,7 +11,7 @@ import org.apache.ibatis.annotations.*;
 public interface GrammarMapper {
 
     //搜索语法
-    @Select("select * from grammar.grammar where id = #{id}")
+    @Select("select * from `grammar`.`grammar` where id=#{id}")
     @Results({
         //必须再写一次才会付值给Grammar的id属性否则属性为空
         @Result(property = "id", column = "id"),
@@ -22,7 +22,7 @@ public interface GrammarMapper {
     Grammar findGrammarByID(Integer id);
 
     //根据语法id 搜索语法的意思
-    @Select("select * from grammar.Means where grammar_id = #{grammarID}")
+    @Select("select * from `grammar`.`means` where grammar_id=#{grammarID}")
     @Results({
         //必须再写一次才会付值给Grammar的id属性否则属性为空
         @Result(property = "id", column = "id"),
@@ -33,7 +33,7 @@ public interface GrammarMapper {
     List<Mean> findMeanByGrammarID(Integer grammarID);
 
     //根据意思id 搜索语法的例句
-    @Select("select * from grammar.examples where mean_id = #{meanID}")
+    @Select("select * from `grammar`.`examples` where mean_id=#{meanID}")
     List<Example> findExampleByMeanID(Integer meanID);
 
     //根据例句id查找例句
@@ -42,7 +42,7 @@ public interface GrammarMapper {
 
     /******************************    搜索功能 *******************************/
     //根据关键字查找语法
-    @Select("select id,title,level from grammar.grammar where title like '%${title}%'")
+    @Select("select id,title,level from `grammar`.`grammar` where title like '%${title}%'")
     @Results({
         //必须再写一次才会付值给Grammar的id属性否则属性为空
         @Result(property = "id", column = "id"),
@@ -53,7 +53,7 @@ public interface GrammarMapper {
     List<Grammar> findGrammarByKeyword(@Param("title") String title);
 
     //根据语法等级搜索语法
-    @Select("select id,title,level from grammar.grammar where level='${level}'")
+    @Select("select id,title,level from `grammar`.`grammar` where level='${level}'")
     @Results({
         //必须再写一次才会付值给Grammar的id属性否则属性为空
         @Result(property = "id", column = "id"),
@@ -65,7 +65,7 @@ public interface GrammarMapper {
 
 
     //根据关键字搜索语法的意思
-    @Select("select id,mean from grammar.Means where grammar_id = #{grammarID}")
+    @Select("select `id`,`mean` from `grammar`.`means` where grammar_id=#{grammarID}")
     List<Mean> searchMeanByGrammarID(Integer grammarID);
 
 
