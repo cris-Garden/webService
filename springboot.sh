@@ -54,9 +54,17 @@ fi
 restart(){ 
 stop 
 start 
+}
+#自动pull
+pull(){ 
+sh autopull.sh &
 } 
 #根据输入参数,选择执行对应方法,不输入则执行使用说明 
 case "$1" in 
+"pull") 
+echo "开始自动pull" 
+pull 
+;; 
 "start") 
 echo "开始启动" 
 start 
