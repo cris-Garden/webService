@@ -40,19 +40,15 @@ public class NewsController {
     public SearchData getNHKNextPage(@PathVariable("id") int id) {
         System.out.println(id);
         List<News> newsList = newMapper.selectNextPageByIDAndType(id,"nhk_easy");
-        int max = newMapper.selectCountByType("nhk_easy");
-        SearchData data = new SearchData<News>();
-        data.setItems(newsList);
-        data.setItemCount(newsList.size());
-        data.setMaxCount(max);
-        return data;
+        return createData(newsList,"nhk_easy");
     }
 
     @ApiOperation("更新新闻nhk新闻")
     @GetMapping("/news/nhk/update")
-    public List<News> getNHKFirstPage() {
+    public SearchData getNHKFirstPage() {
         List<News> newsList = newMapper.selectFirstPageByType("nhk_easy");
-        return newsList;
+        SearchData data = createData(newsList,"nhk_easy");
+        return data;
     }
 
     @ApiOperation("分页查询查找下一页NHK新聞、传递最后一条新闻id")
@@ -60,19 +56,25 @@ public class NewsController {
     public SearchData getDayNextPage(@PathVariable("id") int id) {
         System.out.println(id);
         List<News> newsList = newMapper.selectNextPageByIDAndType(id,"day_easy");
-        int max = newMapper.selectCountByType("day_easy");
-        SearchData data = new SearchData<News>();
-        data.setItems(newsList);
-        data.setItemCount(newsList.size());
-        data.setMaxCount(max);
+        SearchData data = createData(newsList,"day_easy");
         return data;
     }
 
     @ApiOperation("更新新闻每日新闻")
     @GetMapping("/news/day/update")
-    public List<News> getDayFirstPage() {
+    public SearchData getDayFirstPage() {
         List<News> newsList = newMapper.selectFirstPageByType("day_easy");
-        return newsList;
+        SearchData data = createData(newsList,"day_easy");
+        return data;
+    }
+
+    private SearchData createData(List<News> newList,String type){
+        int max = newMapper.selectCountByType(type);
+        SearchData data = new SearchData<News>();
+        data.setItems(newList);
+        data.setItemCount(newList.size());
+        data.setMaxCount(max);
+        return data;
     }
 
 }
